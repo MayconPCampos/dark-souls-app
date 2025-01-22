@@ -49,7 +49,9 @@ const MenuFlatList = () => {
           data={menuList}
           renderItem={({item}) => (
             <View style={style.itemContainer}>
-              <View style={style.imageContainer}></View>
+              <View style={style.itemImageBorder}>
+                <View style={style.imageContainer}></View>
+              </View>
               <Text style={style.itemTitle}>{item.itemName}</Text>
             </View>
           )}></FlatList>
