@@ -4,7 +4,10 @@ import style from './styles';
 
 const SearchBar = () => {
   return (
-    <TextInput style={style.searchBarContainer} value={'Search'}></TextInput>
+    <TextInput
+      style={style.searchBarContainer}
+      placeholder={'Search'}
+      placeholderTextColor={'#555'}></TextInput>
   );
 };
 

@@ -1,17 +1,19 @@
 import React from 'react';
 import {View} from 'react-native';
-import Container from './components/container/container';
-import MenuFlatList from './components/menuFlatList/menuFlatList';
-import SearchBar from './components/searchBar/searchBar';
+import Container from './components/Container/Container';
+import ItemMenu from './components/ItemMenu/ItemMenu';
+import SearchBar from './components/searchBar/SearchBar';
 import Title from './components/title/Title';
+import ItemDetailSection from './components/ItemDetailSection/ItemDetailSection';
 
 const App = () => {
   return (
     <View>
-      <Title />
+      {/* <Title /> */}
       <Container>
         <SearchBar />
-        <MenuFlatList />
+        {/* <ItemMenu /> */}
+        <ItemDetailSection />
       </Container>
     </View>
   );

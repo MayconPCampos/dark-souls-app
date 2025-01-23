@@ -8,6 +8,9 @@ const style = StyleSheet.create({
     backgroundColor: '#3D3D3D',
     marginTop: 30,
     marginBottom: 20,
+    paddingLeft: 25,
+    fontSize: 20,
+    color: '#bbb',
   },
 });
 
