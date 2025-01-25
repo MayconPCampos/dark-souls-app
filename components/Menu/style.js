@@ -17,7 +17,7 @@ const style = StyleSheet.create({
     borderWidth: 1,
   },
   imageContainer: {
-    backgroundColor: '#3D3D3D',
+    backgroundColor: '#111',
     width: 70,
     height: 70,
     borderRadius: 50,
@@ -31,23 +31,29 @@ const style = StyleSheet.create({
     height: 50,
   },
   itemTitle: {
-    color: '#ffffff',
+    color: '#ddd',
     textAlign: 'center',
     marginTop: 2,
   },
+  itemList: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 10,
+  },
   itemListContainer: {
-    margin: 2,
     height: 150,
-    borderTopWidth: 1,
-    borderTopColor: '#8F7C44',
+    borderBottomWidth: 1,
+    borderBottomColor: '#8F7C44',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'start',
     alignItems: 'center',
+    margin: 10,
   },
   itemListName: {
-    color: '#ffffff',
+    color: '#ddd',
     marginLeft: 40,
+    textDecorationLine: 'underline',
   },
 });
 

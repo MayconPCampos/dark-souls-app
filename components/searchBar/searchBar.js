@@ -7,7 +7,7 @@ const SearchBar = () => {
     <TextInput
       style={style.searchBarContainer}
       placeholder={'Search'}
-      placeholderTextColor={'#555'}></TextInput>
+      placeholderTextColor={'#777'}></TextInput>
   );
 };
 

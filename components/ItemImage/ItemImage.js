@@ -2,14 +2,11 @@ import React from 'react';
 import {View, Image} from 'react-native';
 import style from './style';
 
-const ItemImage = () => {
+const ItemImage = props => {
   return (
     <View style={style.ContainerOutline}>
       <View style={style.imageItemContainer}>
-        <Image
-          style={style.itemImage}
-          source={require('../../assets/images/item/knight_helm.png')}
-        />
+        <Image style={style.itemImage} source={props.url} />
       </View>
     </View>
   );

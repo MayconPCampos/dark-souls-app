@@ -1,21 +1,20 @@
 import React from 'react';
-import {View} from 'react-native';
 import Container from './components/Container/Container';
-import ItemMenu from './components/ItemMenu/ItemMenu';
-import SearchBar from './components/searchBar/SearchBar';
 import Title from './components/title/Title';
-import ItemDetailSection from './components/ItemDetailSection/ItemDetailSection';
+import ArmorPage from './components/ArmorPage/ArmorPage';
+import MainPage from './components/MainPage/MainPage';
+import WeaponShieldPage from './components/WeaponShieldPage/WeaponShieldPage';
 
 const App = () => {
   return (
-    <View>
+    <>
       {/* <Title /> */}
       <Container>
-        <SearchBar />
-        {/* <ItemMenu /> */}
-        <ItemDetailSection />
+        <MainPage />
+        {/* <ArmorPage /> */}
+        {/* <WeaponShieldPage /> */}
       </Container>
-    </View>
+    </>
   );
 };
 

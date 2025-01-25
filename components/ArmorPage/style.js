@@ -5,12 +5,22 @@ const style = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '5%',
+    paddingTop: '4%',
   },
   itemDetailTitle: {
-    color: '#ffffff',
+    color: '#ddd',
     fontSize: 28,
     marginTop: 12,
+    marginBottom: 20,
+  },
+  itemDetailFrame: {
+    borderWidth: 1,
+    borderColor: '#fff',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+    paddingTop: 60,
   },
 });
 

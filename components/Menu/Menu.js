@@ -151,13 +151,13 @@ const ItemMenu = () => {
           )}
         />
         <FlatList
+          style={style.itemList}
           showsVerticalScrollIndicator={false}
           data={itemData}
           renderItem={({item}) => (
             <View style={style.itemListContainer}>
               <Image source={item.image} />
               <Text style={style.itemListName}>{item.name}</Text>
-              <Text style={style.itemListName}></Text>
             </View>
           )}
         />
