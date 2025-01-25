@@ -4,7 +4,7 @@ import SearchBar from '../searchBar/SearchBar';
 import style from './style';
 
 const MainPage = () => {
-  const itemList = [
+  const menuList = [
     {
       itemName: 'Armor',
       itemImage: require('../../assets/images/menu/knight_helm.png'),
@@ -125,9 +125,48 @@ const MainPage = () => {
     },
   ];
 
+  const itemList = [
+    {
+      name: 'Armor 01',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 02',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 03',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 04',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 05',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 06',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 07',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 08',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+    {
+      name: 'Armor 09',
+      image: require('../../assets/images/item/knight_helm.png'),
+    },
+  ];
+
   const itemListPageSize = 3;
 
-  const [itemData, setItemData] = useState(itemList[0].itemList);
+  const [itemData, setItemData] = useState(itemList);
 
   //infinite scroll
   const [itemListCurrentPage, setItemListCurrentPage] = useState(1);
@@ -163,7 +202,7 @@ const MainPage = () => {
           <FlatList
             showsHorizontalScrollIndicator={false}
             horizontal={true}
-            data={itemList}
+            data={menuList}
             renderItem={({item}) => (
               <Pressable onPress={() => changeItem(item.itemList)}>
                 <View style={style.itemContainer}>
@@ -180,7 +219,9 @@ const MainPage = () => {
           <FlatList
             onEndReachedThreshold={0.5}
             onEndReached={() => {
-              if (isloadingItemList) return;
+              if (isloadingItemList) {
+                return;
+              }
               setIsLoadingItemList(true);
               const contentToAppend = pagination(
                 itemList,
@@ -191,11 +232,11 @@ const MainPage = () => {
                 setItemListCurrentPage(itemListCurrentPage + 1);
                 setItemListRenderedData(prev => [...prev, ...contentToAppend]);
               }
-              setIsLoadingItemList(true);
+              setIsLoadingItemList(false);
             }}
             style={style.itemList}
             showsVerticalScrollIndicator={false}
-            data={itemData}
+            data={itemListRenderedData}
             renderItem={({item}) => (
               <View style={style.itemListContainer}>
                 <Image source={item.image} />
