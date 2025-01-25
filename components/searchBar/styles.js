@@ -10,6 +10,7 @@ const style = StyleSheet.create({
     marginBottom: 20,
     paddingLeft: 25,
     fontSize: 20,
+    color: '#ccc',
   },
 });
 
