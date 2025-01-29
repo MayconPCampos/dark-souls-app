@@ -10,27 +10,48 @@ const MainPage = () => {
       itemImage: require('../../assets/images/menu/knight_helm.png'),
       itemList: [
         {
-          name: 'Armor 01',
+          id: '01',
+          name: 'Armor-01',
           image: require('../../assets/images/item/knight_helm.png'),
         },
         {
-          name: 'Armor 01',
+          id: '02',
+          name: 'Armor-02',
           image: require('../../assets/images/item/knight_helm.png'),
         },
         {
-          name: 'Armor 01',
+          id: '03',
+          name: 'Armor-03',
           image: require('../../assets/images/item/knight_helm.png'),
         },
         {
-          name: 'Armor 01',
+          id: '04',
+          name: 'Armor-04',
           image: require('../../assets/images/item/knight_helm.png'),
         },
         {
-          name: 'Armor 01',
+          id: '05',
+          name: 'Armor-05',
           image: require('../../assets/images/item/knight_helm.png'),
         },
         {
-          name: 'Armor 01',
+          id: '06',
+          name: 'Armor-06',
+          image: require('../../assets/images/item/knight_helm.png'),
+        },
+        {
+          id: '07',
+          name: 'Armor-07',
+          image: require('../../assets/images/item/knight_helm.png'),
+        },
+        {
+          id: '08',
+          name: 'Armor-08',
+          image: require('../../assets/images/item/knight_helm.png'),
+        },
+        {
+          id: '09',
+          name: 'Armor-09',
           image: require('../../assets/images/item/knight_helm.png'),
         },
       ],
@@ -49,27 +70,33 @@ const MainPage = () => {
       itemImage: require('../../assets/images/menu/2005.png'),
       itemList: [
         {
-          name: 'Consumable 01',
+          id: '01',
+          name: 'Consumable-01',
           image: require('../../assets/images/item/2005.png'),
         },
         {
-          name: 'Consumable 01',
+          id: '02',
+          name: 'Consumable-02',
           image: require('../../assets/images/item/2005.png'),
         },
         {
-          name: 'Consumable 01',
+          id: '03',
+          name: 'Consumable-03',
           image: require('../../assets/images/item/2005.png'),
         },
         {
-          name: 'Consumable 01',
+          id: '04',
+          name: 'Consumable-04',
           image: require('../../assets/images/item/2005.png'),
         },
         {
-          name: 'Consumable 01',
+          id: '05',
+          name: 'Consumable-05',
           image: require('../../assets/images/item/2005.png'),
         },
         {
-          name: 'Consumabler 01',
+          id: '06',
+          name: 'Consumabler-06',
           image: require('../../assets/images/item/2005.png'),
         },
       ],
@@ -125,53 +152,16 @@ const MainPage = () => {
     },
   ];
 
-  const itemList = [
-    {
-      name: 'Armor 01',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 02',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 03',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 04',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 05',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 06',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 07',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 08',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-    {
-      name: 'Armor 09',
-      image: require('../../assets/images/item/knight_helm.png'),
-    },
-  ];
-
   const itemListPageSize = 3;
 
-  const [itemData, setItemData] = useState(itemList);
+  const [itemList, setItemData] = useState(menuList[0].itemList);
 
   //infinite scroll
   const [itemListCurrentPage, setItemListCurrentPage] = useState(1);
   const [itemListRenderedData, setItemListRenderedData] = useState([]);
   const [isloadingItemList, setIsLoadingItemList] = useState(false);
+  const [isContentFirstTimeLoaded, setIsContentFirstTimeLoaded] =
+    useState(false);
 
   const pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage - 1) * pageSize;
@@ -185,14 +175,18 @@ const MainPage = () => {
 
   const changeItem = item => {
     setItemData(item);
+    setItemListCurrentPage(1);
   };
 
   useEffect(() => {
     setIsLoadingItemList(true);
-    const getInidialData = pagination(itemList, 1, itemListPageSize);
-    setItemListRenderedData(getInidialData);
+    if (!isContentFirstTimeLoaded) {
+      const getInidialData = pagination(itemList, 1, itemListPageSize);
+      setItemListRenderedData(getInidialData);
+    }
+    setIsContentFirstTimeLoaded(false);
     setIsLoadingItemList(false);
-  }, []);
+  }, [itemList]);
 
   return (
     <>
@@ -204,7 +198,10 @@ const MainPage = () => {
             horizontal={true}
             data={menuList}
             renderItem={({item}) => (
-              <Pressable onPress={() => changeItem(item.itemList)}>
+              <Pressable
+                onPress={() => {
+                  changeItem(item.itemList);
+                }}>
                 <View style={style.itemContainer}>
                   <View style={style.itemImageBorder}>
                     <View style={style.imageContainer}>
@@ -238,9 +235,20 @@ const MainPage = () => {
             showsVerticalScrollIndicator={false}
             data={itemListRenderedData}
             renderItem={({item}) => (
-              <View style={style.itemListContainer}>
-                <Image source={item.image} />
-                <Text style={style.itemListName}>{item.name}</Text>
+              <View
+                key={item.id}
+                style={[
+                  style.itemListContainer,
+                  {
+                    borderTopWidth: item.id === '01' ? 0 : 1,
+                  },
+                ]}>
+                <Image key={item.name} source={item.image} />
+                <Text key={item.id + item.name} style={style.itemListName}>
+                  {item.name}
+                </Text>
+
+                {console.log('rendering item name: ' + item.name)}
               </View>
             )}
           />
